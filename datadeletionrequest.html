@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppFinder - Data Deletion Request</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-top: 8px;
+            font-size: 16px;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f1f8ff 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f39c12;
+            margin: 25px 0;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        input[type="email"], 
+        textarea, 
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        input[type="email"]:focus, 
+        textarea:focus, 
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #3498db;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        .data-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .data-type {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 2px solid #e1e8ed;
+        }
+        .data-type h4 {
+            margin: 0 0 8px 0;
+            color: #2c3e50;
+        }
+        .data-type p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .success-message {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 25px 0;
+            display: none;
+        }
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .timeline {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .timeline-icon {
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">AF</div>
+            <h1>Data Deletion Request</h1>
+            <p class="subtitle">Request deletion of your AppFinder account and associated data</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🔒 Your Privacy Rights</h3>
+            <p>You have the right to request deletion of your personal data from AppFinder. This form allows you to submit a deletion request, which we will process within 30 days according to applicable privacy laws.</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ Important Information</h3>
+            <p><strong>This action cannot be undone.</strong> Once your data is deleted, you will lose access to:</p>
+            <ul>
+                <li>Your AppFinder account and profile</li>
+                <li>All survey responses and preferences</li>
+                <li>App usage history and settings</li>
+                <li>Any saved data within the application</li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <h3>Data Deletion Request Form</h3>
+            
+            <form id="deletionForm">
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter the email associated with your AppFinder account">
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Reason for Deletion (Optional)</label>
+                    <select id="reason" name="reason">
+                        <option value="">Select a reason</option>
+                        <option value="no_longer_using">No longer using the app</option>
+                        <option value="privacy_concerns">Privacy concerns</option>
+                        <option value="switching_apps">Switching to another app</option>
+                        <option value="account_issues">Account issues</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_info">Additional Information (Optional)</label>
+                    <textarea id="additional_info" name="additional_info" placeholder="Any additional details about your deletion request..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Data Types to Delete:</label>
+                    <div class="data-types">
+                        <div class="data-type">
+                            <h4>Profile Data</h4>
+                            <p>Name, email, profile picture from social login</p>
+                        </div>
+                        <div class="data-type">
+                            <h4>Survey Data</h4>
+                            <p>All survey responses and preferences</p>
+                        </div>
+                        <div class="data-type">
+                            <h4>Usage Data</h4>
+                            <p>App interactions and analytics data</p>
+                        </div>
+                        <div class="data-type">
+                            <h4>Account Data</h4>
+                            <p>Authentication tokens and account settings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="confirm" name="confirm" required>
+                    <label for="confirm">I understand that this action is permanent and cannot be undone. I want to permanently delete my AppFinder account and all associated data.</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="identity" name="identity" required>
+                    <label for="identity">I confirm that I am the owner of the email address provided above and have the authority to request deletion of this data.</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Deletion Request</button>
+            </form>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h3>✅ Request Submitted Successfully</h3>
+            <p>Your data deletion request has been submitted. We will process your request within 30 days and send a confirmation email once completed.</p>
+        </div>
+
+        <div class="timeline">
+            <h3>What Happens Next?</h3>
+            <div class="timeline-item">
+                <div class="timeline-icon">1</div>
+                <div>
+                    <strong>Request Verification</strong><br>
+                    We verify your identity and account ownership (1-2 business days)
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">2</div>
+                <div>
+                    <strong>Data Deletion</strong><br>
+                    Your data is permanently removed from our systems (up to 30 days)
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">3</div>
+                <div>
+                    <strong>Confirmation</strong><br>
+                    You receive email confirmation that deletion is complete
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h3>Need Help?</h3>
+            <p>If you have questions about data deletion or need assistance:</p>
+            <p><strong>Email:</strong> <a href="mailto:e.linetools@gmail.com">e.linetools@gmail.com</a></p>
+            <p><strong>Response Time:</strong> Within 48 hours</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('deletionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const email = formData.get('email');
+            const reason = formData.get('reason');
+            const additionalInfo = formData.get('additional_info');
+            
+            // Create email content
+            const subject = 'AppFinder Data Deletion Request';
+            const body = `
+Data Deletion Request Details:
+
+Email: ${email}
+Reason: ${reason || 'Not specified'}
+Additional Information: ${additionalInfo || 'None'}
+
+Request submitted on: ${new Date().toLocaleString()}
+
+Please process this data deletion request according to your privacy policy and applicable laws.
+            `.trim();
+            
+            // Create mailto link
+            const mailtoLink = `mailto:e.linetools@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Hide form
+            this.style.display = 'none';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
